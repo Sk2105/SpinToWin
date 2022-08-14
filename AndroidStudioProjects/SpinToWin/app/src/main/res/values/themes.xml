@@ -1,0 +1,53 @@
+<resources >
+
+    <style name="Theme.SpinToWinEarnsRewards" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/darkYellow</item>
+    </style>
+
+    <style name="mpvStyle">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:orientation">vertical</item>
+
+
+    </style> <style name="wphStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+
+
+    </style>
+
+    <style name="mwvStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:orientation">vertical</item>
+
+
+    </style>
+
+    <style name="mwhStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+
+
+    </style>
+
+    <style name="mpStyle">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="wpvStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+
+    </style>
+
+    <style name="wpStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+</resources>

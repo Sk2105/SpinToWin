@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/mpvbStyle"
+    tools:context=".RedeemActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <Button
+        style="@style/buttonStyle"
+        android:onClick="a1"
+        android:text="@string/_1000" />
+
+    <Button
+        style="@style/buttonStyle"
+        android:onClick="a2"
+        android:text="@string/_2000" />
+
+    <Button
+        style="@style/buttonStyle"
+        android:onClick="a5"
+        android:text="@string/_5000" />
+
+    <Button
+        style="@style/buttonStyle"
+        android:onClick="a10"
+        android:text="@string/_10000" />
+
+    <Button
+        style="@style/buttonStyle"
+        android:onClick="a50"
+        android:text="@string/_50000" />
+
+    <TextView
+        style="@style/textStyle"
+        android:layout_gravity="center"
+        android:text="@string/note_1000_coins_10_rs"
+        android:textSize="@dimen/textSize16" />
+
+</LinearLayout>

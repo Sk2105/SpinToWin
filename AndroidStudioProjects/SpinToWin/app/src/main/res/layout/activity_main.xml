@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/mpvbStyle"
+    tools:context=".MainActivity">
+
+    <include layout="@layout/toolbar"/>
+
+
+    <Button
+        style="@style/buttonStyle"
+        android:onClick="SpinClick"
+        android:text="@string/spin" />
+
+    <Button
+        style="@style/buttonStyle"
+        android:onClick="redeemClick"
+        android:text="@string/redeem" />
+
+    <Button
+        style="@style/buttonStyle"
+        android:onClick="policyClick"
+        android:text="@string/privacy_policy" />
+<Button
+    android:text="@string/share_app"
+    style="@style/buttonStyle"
+    android:onClick="shareClick"
+
+
+    />
+    <Button
+        style="@style/buttonStyle"
+        android:onClick="exitClick"
+        android:text="@string/exit" />
+
+</LinearLayout>

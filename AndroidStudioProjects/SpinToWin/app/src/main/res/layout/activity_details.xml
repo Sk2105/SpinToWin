@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/mpvbStyle"
+    tools:context=".DetailsActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <ImageView
+        style="@style/mwhStyle"
+        android:src="@drawable/paytm_icon"
+     />
+
+    <EditText
+        android:id="@+id/name"
+        style="@style/editBoxStyle"
+        android:hint="@string/enter_name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/upi"
+        style="@style/editBoxStyle"
+        android:hint="@string/enter_upi_no"
+        android:inputType="number"
+        android:maxLength="10"
+        android:importantForAutofill="no" />
+
+    <Button
+        style="@style/buttonStyle"
+        android:onClick="redeemClick"
+        android:text="@string/redeem"
+
+        />
+</LinearLayout>

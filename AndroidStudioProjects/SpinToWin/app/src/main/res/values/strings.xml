@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Spin To Win</string>
+    <string name="redeem">Redeem</string>
+    <string name="spin">Spin</string>
+    <string name="exit">Exit</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="share_app">Share App</string>
+    <string name="_1000">10000</string>
+    <string name="adId">ca-app-pub-3397903282571414/3043479358</string>
+    <string name="_2000">20000</string>
+    <string name="_5000">50000</string>
+    <string name="_50000">500000</string>
+    <string name="_10000">100000</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_upi_no">Enter UPI No.</string>
+    <string name="note_1000_coins_10_rs"><![CDATA[1000 Coins = 10 Rs]]></string>
+</resources>
