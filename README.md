@@ -26,3 +26,6 @@ Disclaimer :-
 *We doesn't Associated with any Company and Brand etc. 
 *We do not collect any kind of personal information or data in our application. 
 *If you have any issue please contact us on sk2105@yahoo.com 
+
+Privecy Policy
+https://www.app-privacy-policy.com/live.php?token=XS6012yEdEiiOFyFCgFNjogyYsLIc8K4
