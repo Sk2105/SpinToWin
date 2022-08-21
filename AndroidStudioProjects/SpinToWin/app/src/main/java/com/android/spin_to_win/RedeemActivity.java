@@ -74,7 +74,7 @@ public class RedeemActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startIntent(MainActivity.class, 0);
+      finish();
     }
 
 }

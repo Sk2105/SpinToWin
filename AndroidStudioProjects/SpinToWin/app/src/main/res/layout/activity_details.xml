@@ -8,8 +8,14 @@
 
     <ImageView
         style="@style/mwhStyle"
-        android:src="@drawable/paytm_icon"
-     />
+        android:src="@drawable/paytm_icon" />
+
+    <TextView
+        android:id="@+id/text"
+        style="@style/textStyle"
+        android:layout_gravity="center"
+
+        />
 
     <EditText
         android:id="@+id/name"
@@ -21,14 +27,12 @@
         android:id="@+id/upi"
         style="@style/editBoxStyle"
         android:hint="@string/enter_upi_no"
+        android:importantForAutofill="no"
         android:inputType="number"
-        android:maxLength="10"
-        android:importantForAutofill="no" />
+        android:maxLength="10" />
 
     <Button
         style="@style/buttonStyle"
         android:onClick="redeemClick"
-        android:text="@string/redeem"
-
-        />
+        android:text="@string/redeem" />
 </LinearLayout>

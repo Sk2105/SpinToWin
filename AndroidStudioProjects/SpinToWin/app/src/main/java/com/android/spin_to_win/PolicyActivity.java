@@ -1,8 +1,6 @@
 package com.android.spin_to_win;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
+import androidx.appcompat.app.AppCompatActivity;;
 import android.os.Bundle;
 import android.webkit.WebView;
 
@@ -19,8 +17,6 @@ public class PolicyActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(this, MainActivity.class));
         finish();
-        super.onBackPressed();
     }
 }

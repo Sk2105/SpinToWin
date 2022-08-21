@@ -1,19 +1,16 @@
 package com.android.spin_to_win;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 
+import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd;
 
@@ -26,7 +23,6 @@ public class WheelActivity extends AppCompatActivity {
     DataBase dataBase;
     TextView coins;
     Boolean spinning;
-    int res;
     RewardedInterstitialAd ad;
     RewardAdClass rewardAdClass;
 
@@ -37,15 +33,15 @@ public class WheelActivity extends AppCompatActivity {
         spinning = false;
         rewardAdClass = new RewardAdClass(this, ad, getString(R.string.adId),
                 new AdRequest.Builder().build());
-
-
         new ToastClass(getApplicationContext());
         dataBase = new DataBase(this);
+        coins = findViewById(R.id.coins);
         coins = findViewById(R.id.coins);
         coins.setText(String.valueOf(dataBase.fecthData()));
         wheel_icon = findViewById(R.id.Wheel_icon);
         spin = findViewById(R.id.spin);
         spin.setOnClickListener(v -> {
+            spinning = true;
             startAnimation();
         });
     }
@@ -58,17 +54,14 @@ public class WheelActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 int min = (int) (millisUntilFinished / 1000) / 60;
                 int sec = (int) (millisUntilFinished / 1000) % 60;
-                spinning = true;
                 String t = String.format(Locale.getDefault(), "%02d:%02d", min, sec);
                 spin.setText(t);
-                spin.setEnabled(false);
             }
 
             @Override
             public void onFinish() {
                 spin.setText(getText(R.string.spin));
                 spinning = false;
-                spin.setEnabled(true);
             }
         }.start();
 
@@ -78,15 +71,17 @@ public class WheelActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
+        if (spinning) {
+            ToastClass.toast("Please wait");
+        } else {
+            finish();
+        }
     }
 
     public void startAnimation() {
         Random r = new Random();
         int d = r.nextInt(360);
-        RotateAnimation rotate = new RotateAnimation(0, d + (360 * 5),
+        RotateAnimation rotate = new RotateAnimation(0, d + (360 * 10),
                 Animation.RELATIVE_TO_SELF,
                 0.5f,
                 Animation.RELATIVE_TO_SELF, 0.5f);
@@ -102,8 +97,7 @@ public class WheelActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                endCall(d);
-
+                endCall((int) (d / 51.5));
             }
 
             @Override
@@ -111,44 +105,40 @@ public class WheelActivity extends AppCompatActivity {
 
             }
         });
-
         wheel_icon.startAnimation(rotate);
-
     }
 
 
     private void endCall(int d) {
-        if (d >= 0 && d < 40) {
-            res = 10;
-        } else if (d >= 40 && d < 80) {
-            res = 0;
-        } else if (d >= 80 && d < 120) {
-            res = 15;
-
-        } else if (d >= 120 && d < 160) {
-            res = 25;
-        } else if (d >= 160 && d < 200) {
-            res = 35;
-        } else if (d >= 200 && d < 240) {
-            res = 40;
-
-        } else if (d >= 240 && d < 280) {
-            res = 30;
-
-        } else if (d >= 280 && d < 320) {
-            res = 20;
-
-        } else if (d >= 320 && d < 360) {
-            res = 5;
-
+        if (d == 0) {
+            updateDatabase(100);
+        } else if (d == 1) {
+            updateDatabase(50);
+        } else if (d == 2) {
+            updateDatabase(30);
+        } else if (d == 3) {
+            updateDatabase(20);
+        } else if (d == 4) {
+            updateDatabase(10);
+        } else if (d == 5) {
+            updateDatabase(5);
+        } else if (d == 6) {
+            updateDatabase(0);
         }
-        new Handler().postDelayed(() -> rewardAdClass.interAds(() -> {
-        }), 5000);
-        startTime();
-        dataBase.updateDataBase(res);
-        coins.setText(String.valueOf(dataBase.fecthData()));
-        ToastClass.toast("You Earn +" + res + " Coins");
+    }
 
+    public void updateDatabase(int r) {
+        try {
+            new Handler().postDelayed(() -> rewardAdClass.interAds(() -> {
+            }), 5000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            startTime();
+            dataBase.updateDataBase(r);
+            coins.setText(String.valueOf(dataBase.fecthData()));
+            ToastClass.toast("You Earn +" + r + " Coins");
+        }
     }
 
 

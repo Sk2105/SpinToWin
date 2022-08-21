@@ -31,10 +31,5 @@
         android:onClick="a50"
         android:text="@string/_50000" />
 
-    <TextView
-        style="@style/textStyle"
-        android:layout_gravity="center"
-        android:text="@string/note_1000_coins_10_rs"
-        android:textSize="@dimen/textSize16" />
 
 </LinearLayout>

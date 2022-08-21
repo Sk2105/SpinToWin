@@ -9,24 +9,25 @@
 
     <ImageView
         android:id="@+id/Wheel_icon"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/mwhStyle"
+        android:layout_margin="@dimen/a10"
         android:layout_centerInParent="true"
         android:src="@drawable/wheel_icon" />
 
 
     <ImageView
-        android:layout_width="@dimen/a80"
-        android:layout_height="@dimen/a80"
+        android:layout_width="@dimen/a60"
+        android:layout_height="@dimen/a60"
         android:layout_centerInParent="true"
-        android:src="@drawable/wheel_select" />
+        android:rotation="135"
+        android:src="@drawable/wheel_shape" />
 
     <Button
         android:id="@+id/spin"
         style="@style/buttonStyle"
         android:layout_below="@id/Wheel_icon"
-      android:layout_centerInParent="true"
-        android:layout_margin="@dimen/a40"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/a32"
         android:text="@string/spin" />
 
 </RelativeLayout>

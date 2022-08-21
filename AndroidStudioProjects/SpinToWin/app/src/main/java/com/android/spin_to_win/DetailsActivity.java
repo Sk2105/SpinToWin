@@ -2,7 +2,6 @@ package com.android.spin_to_win;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -10,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class DetailsActivity extends AppCompatActivity {
-    TextView coins;
+    TextView coins, text;
     EditText name, upi;
     String n, u;
     int c, i;
@@ -21,6 +20,7 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         coins = findViewById(R.id.coins);
+        text = findViewById(R.id.text);
         new ToastClass(this);
         dataBase = new DataBase(this);
         i = dataBase.fecthData();
@@ -30,7 +30,7 @@ public class DetailsActivity extends AppCompatActivity {
         n = name.getText().toString();
         u = upi.getText().toString();
         c = getIntent().getIntExtra("Coins", 0);
-
+        text.setText(String.valueOf(c / 100));
     }
 
     private void checkEmpty() {
@@ -42,14 +42,13 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
 
-    public void startIntent(Class activity) {
-        startActivity(new Intent(this, activity));
+    public void startIntent() {
         finish();
     }
 
     @Override
     public void onBackPressed() {
-        startIntent(MainActivity.class);
+        startIntent();
     }
 
     public void redeemClick(View view) {

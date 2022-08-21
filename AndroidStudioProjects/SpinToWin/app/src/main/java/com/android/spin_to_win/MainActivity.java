@@ -2,6 +2,7 @@ package com.android.spin_to_win;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,15 +15,27 @@ import com.google.android.gms.ads.MobileAds;
 public class MainActivity extends AppCompatActivity {
     TextView coins;
     int i;
+    SwipeRefreshLayout swipeRefreshLayout;
+    DataBase dataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         coins = findViewById(R.id.coins);
+        swipeRefreshLayout = findViewById(R.id.swipe);
+        swipeRefreshLayout.setColorScheme(R.color.purple);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            setData();
+            swipeRefreshLayout.setRefreshing(false);
+        });
         new ToastClass(this);
-        DataBase dataBase = new DataBase(this);
+        dataBase = new DataBase(this);
         MobileAds.initialize(this);
+        setData();
+    }
+
+    public void setData() {
         if (dataBase.fecthData() == 0) {
             dataBase.insertDataBase(499);
         }
@@ -36,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void redeemClick(View view) {
         startTryIntent(() -> startIntent(RedeemActivity.class));
-
-
     }
 
     public void policyClick(View view) {
@@ -59,13 +70,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void showAlert() {
         new AlertDialog.Builder(this).setTitle("Alert").setMessage("Are You " +
-                "Sure You Want To exit ?").setNegativeButton("No", (dialog, which) -> dialog.dismiss()).setPositiveButton("Yes", (dialog, which) -> finish()).show();
+                "sure You want To exit ?").setNegativeButton("No",
+                (dialog, which) -> dialog.dismiss()).setPositiveButton("Yes", (dialog, which) -> finish()).show();
     }
 
     public void startIntent(Class activity) {
         startActivity(new Intent(this, activity));
-        finish();
     }
+
     public void startTryIntent(InterfaceClass interfaceClass) {
         interfaceClass.start();
     }
