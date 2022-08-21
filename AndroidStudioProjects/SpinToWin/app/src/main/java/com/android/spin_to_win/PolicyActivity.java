@@ -12,7 +12,7 @@ public class PolicyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_policy);
         webView = findViewById(R.id.View);
-        webView.loadUrl("https://www.app-privacy-policy.com/live.php?token=Za5GjoyDWubVA6LO4CKr1XuevMlhyJaA");
+        webView.loadUrl("https://www.app-privacy-policy.com/live.php?token=wEghdoeFtRkz8Xqo2X9NtZvgH5w9RlV1");
     }
 
     @Override

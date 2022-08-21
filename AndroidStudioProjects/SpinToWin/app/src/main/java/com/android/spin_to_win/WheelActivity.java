@@ -1,6 +1,8 @@
 package com.android.spin_to_win;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 
@@ -11,6 +13,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd;
 
@@ -22,7 +25,7 @@ public class WheelActivity extends AppCompatActivity {
     Button spin;
     DataBase dataBase;
     TextView coins;
-    Boolean spinning;
+    Boolean spinning, btnEnable;
     RewardedInterstitialAd ad;
     RewardAdClass rewardAdClass;
 
@@ -41,11 +44,18 @@ public class WheelActivity extends AppCompatActivity {
         wheel_icon = findViewById(R.id.Wheel_icon);
         spin = findViewById(R.id.spin);
         spin.setOnClickListener(v -> {
-            spinning = true;
+            setBtnEnable(true, getDrawable(R.drawable.btn), false);
             startAnimation();
         });
     }
 
+    public void setBtnEnable(boolean b, Drawable bg, boolean btn_Enable) {
+        spinning = b;
+        btnEnable = b;
+        spin.setBackgroundDrawable(bg);
+        spin.setEnabled(btn_Enable);
+
+    }
 
     public void startTime() {
 
@@ -61,7 +71,7 @@ public class WheelActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 spin.setText(getText(R.string.spin));
-                spinning = false;
+                setBtnEnable(false, getDrawable(R.drawable.button_bg), true);
             }
         }.start();
 
@@ -79,8 +89,7 @@ public class WheelActivity extends AppCompatActivity {
     }
 
     public void startAnimation() {
-        Random r = new Random();
-        int d = r.nextInt(360);
+        int d = getRandom();
         RotateAnimation rotate = new RotateAnimation(0, d + (360 * 10),
                 Animation.RELATIVE_TO_SELF,
                 0.5f,
@@ -106,6 +115,15 @@ public class WheelActivity extends AppCompatActivity {
             }
         });
         wheel_icon.startAnimation(rotate);
+    }
+
+    public int getRandom() {
+        Random r = new Random();
+        int d;
+        do {
+            d = r.nextInt(360);
+        } while (d <= 110);
+        return d;
     }
 
 
